@@ -6,6 +6,8 @@ import org.rev317.min.debug.DActions;
 import org.rev317.min.script.ScriptEngine;
 
 public class MenuAction {
+	private static int currentOutputIndex = 0;
+
 	private static final String[][] outputs = {
 			{ "[index: %d, action1: %d, action2: %d, action3: %d, action4: %d, id: %d]",
 					"[id: %d, action1: %d, action2: %d, action3: %d, action4: %d, index: %d]" },
@@ -33,4 +35,12 @@ public class MenuAction {
 		}
 		ScriptEngine.getInstance().dispatch(new GameActionEvent(b, f, e, d, c, -1));
 	}
+
+	public static void setCurrentOutputIndex(int n) {
+		if (n > outputs.length - 1) {
+			n = 0;
+		}
+		currentOutputIndex = n;
+	}
+
 }

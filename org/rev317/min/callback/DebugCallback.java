@@ -10,4 +10,14 @@ public class DebugCallback {
 			boolean c, int b, int a) {
 		System.out.println("[walkTo] var7: " + h + ", var8: " + g + ", var14: " + a);
 	}
+	
+
+    public static void debug(Object ... arrobject) {
+        for(Object object : arrobject) {
+            System.out.println(object);
+            System.out.println(object.getClass());
+        }
+    }
+
+	
 }

@@ -4,6 +4,7 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.nio.file.Files;
 import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 import java.util.Arrays;
 import java.util.Formatter;
 import java.util.List;
@@ -17,15 +18,26 @@ import org.parabot.core.reflect.RefField;
 public class Ikov {
 	private static boolean PARABOT_IKOV = false;
 
-	private static String byteToHex(final byte[] bytes) {
-		Formatter formatter = new Formatter();
-		for (byte b : bytes) {
-			formatter.format("%02x", b);
-		}
-		String ret = formatter.toString(); // improved original code since they never close it!
-		formatter.close();
-		return ret;
+	/**
+	 * Credits to me since I fixed their shit code :)
+	 */
+	   private static String byteArray2Hex(byte[] hash) {
+		      Formatter formatter = new Formatter();
+		      for (byte b : hash) {
+		         formatter.format("%02x", b);
+		      }
+
+		      String var6 = formatter.toString();
+		      formatter.close();
+		      return var6;
 	}
+
+	    private static String SHAsum(byte[] arrby) throws NoSuchAlgorithmException {
+	        MessageDigest messageDigest = MessageDigest.getInstance("SHA-1");
+	        return byteArray2Hex((byte[])messageDigest.digest(arrby));
+	    }
+
+	   
 
 	private static final List<String> staffList = Arrays
 			.asList(new String[] { "david", "demo", "lucas", "reece", "fergus", "mamba", "supreme", "julia", "pride",
@@ -34,7 +46,7 @@ public class Ikov {
 
 	public static boolean shouldAvoidBan() {
 		try {
-			String username = new RefClass(Loader.getClient()).getField(IkovData.getB()).asString();
+			String username = new RefClass(Loader.getClient()).getField(IkovData.getUsernameField()).asString();
 			if (username != null) {
 				return staffList.contains(username);
 			}
@@ -49,7 +61,7 @@ public class Ikov {
 			return;
 		}
 		try {
-			String mapFieldName = IkovData.getMapFieldName();
+			String mapFieldName = IkovData.getCacheMapField();
 			String UUIDKey = "x.dat";
 
 			File uuidjar = new File(Directories.getDefaultDirectory() + "/.parabot/uuid.jar");
@@ -65,7 +77,7 @@ public class Ikov {
 				Map<String, byte[]> bytesMap = (Map<String, byte[]>) mapField.asObject();
 
 				String originalUUIDHash = "1038d13f8eb4428cbaf8391c31e1d184c4b96536";
-				String currentUUIDHash = byteToHex(MessageDigest.getInstance("SHA-1").digest(bytesMap.get(UUIDKey)));
+				String currentUUIDHash = SHAsum(bytesMap.get(UUIDKey));
 				if (!originalUUIDHash.equals(currentUUIDHash)) {
 					bytesMap.put(UUIDKey, bytes);
 					PARABOT_IKOV = true;

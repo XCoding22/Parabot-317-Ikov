@@ -6,10 +6,10 @@ import org.rev317.min.api.wrappers.TilePath;
 
 public class Walking {
 
-	public static void walkTo(Tile from, Tile to) {
-		Loader.getClient().walkTo(0, 0, 0, 0, from.getRegionY(), 0, (short) 0, (short) 26764, 0, to.getRegionY(),
-				from.getRegionX(), true, to.getRegionX(), 630234110);
-	}
+    public static void walkTo(Tile tile, Tile tile2) {
+        Loader.getClient().walkTo(0, 0, 0, 0, '\u0000', tile.getRegionY(), 0, 0, tile2.getRegionY(), tile.getRegionX(), 1130997729, true, tile2.getRegionX(), (short)-23967);
+    }
+
 
 	public static void walkTo(Tile to) {
 		walkTo(Players.getMyPlayer().getLocation(), to);

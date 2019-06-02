@@ -28,14 +28,14 @@ public final class GameActionEvent {
 		return cmd1;
 	}
 
-	public GameActionEvent(int f, int e, int d, int c, int b, int a) {
-		this.action = f;
-		this.cmd1 = e;
-		this.cmd2 = d;
-		this.cmd3 = c;
-		this.cmd4 = b;
-		this.index = a;
-	}
+    public GameActionEvent(int n, int n2, int n3, int n4, int n5, int n6) {
+        this.action = n;
+        this.cmd1 = n2;
+        this.cmd2 = n3;
+        this.cmd3 = n4;
+        this.cmd4 = n5;
+        this.index = n6;
+    }
 
 	public int getIndex() {
 		return index;

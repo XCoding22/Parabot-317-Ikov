@@ -1,43 +1,56 @@
 package org.rev317.min;
 
 public class IkovData {
-	public static String getE() {
-		return "b";
-	}
+    private static final String cacheMapField = "hS";
+    private static final String ipClass = "G";
+    private static final String mapFieldKey = "UUID.jar";
+    private static final String usernameField = "g";
+    private static final String workingIP = "91.134.140.126";
+    private static final String ipHolderClass = "u";
+    private static final String ipField = "XXXX";
+    private static final String menuActionMethod = "b";
+    private static final String ipHolderField = "b";
+    private static final String menuActionClass = "dn";
 
-	public static String getF() {
-		return "G";
-	}
+    public static String getIPClass() {
+        return ipClass;
+    }
 
-	public static String getI() {
-		return "u";
-	}
+    public static String getCacheMapField() {
+        return cacheMapField;
+    }
 
-	public static String getB() {
-		return "dt";
-	}
+    public static String getWorkingIP() {
+        return workingIP;
+    }
 
-	public static String getMapFieldName() {
-		return "dZ";
-	}
+    public static String getIPHolderField() {
+        return ipHolderField;
+    }
 
-	public static String getA() {
-		return "cS";
-	}
+    public static String getMenuActionMethod() {
+        return menuActionMethod;
+    }
 
-	public static String getUUIDJar() {
-		return "UUID.jar";
-	}
+    public static String getIPHolderClass() {
+        return ipHolderClass;
+    }
 
-	public static String getG() {
-		return "XXXX";
-	}
+    public static String getIPField() {
+        return ipField;
+    }
 
-	public static String getServerIP() {
-		return "91.134.140.126";
-	}
+    public static String getMapFieldKey() {
+        return mapFieldKey;
+    }
 
-	public static String getJ() {
-		return "b";
-	}
+    public static String getMenuActionClass() {
+        return menuActionClass;
+    }
+
+    public static String getUsernameField() {
+        return usernameField;
+    }
 }
+
+
