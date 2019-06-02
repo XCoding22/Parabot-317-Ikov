@@ -146,7 +146,7 @@ public class Loader extends ServerProvider {
 	public static Class<?> getActionClass() {
 		ASMClassLoader b = Context.getInstance().getASMClassLoader();
 		try {
-			return b.loadClass(IkovData.getA());
+			return b.loadClass(IkovData.getMenuActionClass());
 		} catch (ClassNotFoundException a) {
 			a.printStackTrace();
 			return null;

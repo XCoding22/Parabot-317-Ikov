@@ -1,58 +1,58 @@
 package org.rev317.min.accessors;
 
 public interface Client {
-	public boolean isLoggedIn();
+    public int[] getSettings();
 
-	public int getLoopCycle();
+    public void doAction(MenuActions var1, short var2, long var3);
 
-	public int getOpenInterfaceId();
+    public int getLoopCycle();
 
-	public void setInterface(int var1);
+    public Scene getScene();
 
-	public boolean walkTo(int var1, int var2, int var3, int var4, int var5, int var6, short var7,
-			short var8, int var9, int var10, int var11, boolean var12, int var13, int var14);
+    public int getBaseY();
 
-	public Interface[] getInterfaceCache();
+    public void login(String var1, String var2, boolean var3);
 
-	public int getPlane();
+    public int getPlane();
 
-	public void deleteFriend(long var1);
+    public CollisionMap[] getCollisionMap();
 
-	public Deque[][][] getGroundItems();
+    public int[] getCurrentExp();
 
-	public CollisionMap[] getCollisionMap();
+    public int getBackDialogId();
 
-	public Player[] getPlayers();
+    public int getOpenInterfaceId();
 
-	public int getBaseX();
+    public void addFriend(long var1);
 
-	public int[] getSettings();
+    public Player[] getPlayers();
 
-	public Npc[] getNpcs();
+    public void deleteFriend(long var1);
 
-	public int[] getCurrentExp();
+    public int getBaseX();
 
-	public long[] getFriendsListAsLong();
+    public boolean walkTo(int var1, int var2, int var3, int var4, char var5, int var6, int var7, int var8, int var9, int var10, int var11, boolean var12, int var13, short var14);
 
-	public void addFriend(long var1);
+    public Deque[][][] getGroundItems();
 
-	public Scene getScene();
+    public boolean isLoggedIn();
 
-	public void doAction(MenuActions var1, short var2, long var3);
+    public void dropClient();
 
-	public int getBaseY();
+    public int[] getCurrentStats();
 
-	public void dropClient();
+    public long[] getFriendsListAsLong();
 
-	public int getBackDialogId();
+    public Player getMyPlayer();
 
-	public int getInputDialogState();
+    public void setInterface(int var1);
 
-	public void setAmountOrNameInput(String var1);
+    public Interface[] getInterfaceCache();
 
-	public void login(String var1, String var2, boolean var3);
+    public void setAmountOrNameInput(String var1);
 
-	public int[] getCurrentStats();
+    public Npc[] getNpcs();
 
-	public Player getMyPlayer();
+    public int getInputDialogState();
 }
+

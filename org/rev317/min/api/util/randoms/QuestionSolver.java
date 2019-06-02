@@ -32,7 +32,6 @@ public class QuestionSolver implements Random {
 		return RandomType.SCRIPT;
 	}
 
-	@SuppressWarnings("deprecation")
 	public boolean activate() {
 		return Game.isLoggedIn() && Game.getOpenBackDialogId() == 368;
 	}

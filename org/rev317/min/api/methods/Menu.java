@@ -223,7 +223,7 @@ public class Menu {
 
 			Class<?>[] methodsTypes = { java.lang.Character.TYPE, Integer.TYPE, java.lang.Character.TYPE,
 					packetBuffer };
-			new RefClass((Object) Loader.getClient()).getMethod(IkovData.getE(), methodsTypes).invoke((char) 0,
+			new RefClass((Object) Loader.getClient()).getMethod(IkovData.getMenuActionMethod(), methodsTypes).invoke((char) 0,
 					322166898, (char) 40715, instance);
 			return;
 		} catch (NoSuchMethodException | InstantiationException | IllegalAccessException | IllegalArgumentException
