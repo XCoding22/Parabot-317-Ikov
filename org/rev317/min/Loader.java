@@ -41,10 +41,13 @@ import org.parabot.environment.servers.ServerProvider;
 import org.parabot.environment.servers.Type;
 import org.rev317.min.accessors.Client;
 import org.rev317.min.api.util.proxy.IPSelector;
+import org.rev317.min.api.util.randoms.AntiMod;
 import org.rev317.min.api.util.randoms.LogoutDisabler;
 import org.rev317.min.api.util.randoms.QuestionSolver;
 import org.rev317.min.input.Keyboard;
 import org.rev317.min.redirect.IkovClassRedirect;
+import org.rev317.min.redirect.IkovSystemRedirect;
+import org.rev317.min.redirect.MessageDigestRedirect;
 import org.rev317.min.script.ScriptEngine;
 import org.rev317.min.script.XobotScriptParser;
 import org.rev317.min.ui.BotMenu;
@@ -59,11 +62,15 @@ public class Loader extends ServerProvider {
 	}
 
 	public void init() {
-		Context.getInstance().getRandomHandler()
-				.addRandom((org.parabot.environment.randoms.Random) new QuestionSolver());
-		Context.getInstance().getRandomHandler()
-				.addRandom((org.parabot.environment.randoms.Random) new LogoutDisabler());
-		ScriptParser.addParser((ScriptParser) new XobotScriptParser());
+	      Context.getInstance().getRandomHandler().addRandom(new QuestionSolver());
+	      Context.getInstance().getRandomHandler().addRandom(new LogoutDisabler());
+	      Context.getInstance().getRandomHandler().addRandom(new AntiMod());
+	      
+	      Core.verbose("Setting Ikov class redirects");
+	      RedirectClassAdapter.getRedirects().put("java/lang/Class", IkovClassRedirect.class);
+	      RedirectClassAdapter.getRedirects().put("java/security/MessageDigest", MessageDigestRedirect.class);
+	      RedirectClassAdapter.getRedirects().put("java/lang/System", IkovSystemRedirect.class);
+
 	}
 
 	public void injectHooks() {
@@ -117,7 +124,7 @@ public class Loader extends ServerProvider {
 		return processID;
 	}
 
-	private void loadLibs(String... libs) throws NoSuchMethodException, SecurityException, IllegalAccessException,
+	private void addIkovJarsToClasspath(String... libs) throws NoSuchMethodException, SecurityException, IllegalAccessException,
 			IllegalArgumentException, InvocationTargetException, MalformedURLException {
 		for (String lib : libs) {
 			File i = new File(
@@ -228,8 +235,8 @@ public class Loader extends ServerProvider {
 				new Random().nextBytes(byteAllocation);
 				NetworkInterface.setMac(byteAllocation);
 			}
-			String[] libs = { "gson.jar", "jna.jar", "discord-rpc-release.jar", "java-discord-rpc.jar" };
-			loadLibs(libs);
+			String[] libs = { "gson.jar", "jna.jar", "discord-rpc-release.jar", "java-discord-rpc.jar", "fastutil.jar" };
+			addIkovJarsToClasspath(libs);
 			return (Applet) Context.getInstance().getASMClassLoader()
 					.loadClass(Context.getInstance().getServerProviderInfo().getClientClass()).newInstance();
 		} catch (Exception d) {
